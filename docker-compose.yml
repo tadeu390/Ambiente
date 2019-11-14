@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+  server-nginx:
+    container_name: web-server-appx
+    build: infra/web-server/nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/var/www/
+    tty: true
+    networks:
+      - appx-network
+
+  server-mysql:
+    container_name: data-base-appx
+    build: infra/data-base/mysql-5.7.22
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./app/.docker/dbdata:/var/lib/mysql
+    environment:
+     MYSQL_ROOT_PASSWORD: appx-laravel
+     MYSQL_DATABASE: appx-laravel
+     MYSQL_USER: appx-laravel
+     MYSQL_PASSWORD: appx-laravel
+    networks:
+     - appx-network
+
+  server-elasticsearch:
+    container_name: elasticsearch-appx
+    build: infra/log/elasticsearch
+    ports:
+     - "9200:9200"
+    volumes:
+      - ./els:/usr/share/elasticsearch/data
+    environment:
+      discovery.type: single-node
+    networks:
+     - appx-network
+
+  server-kibana:
+    container_name: kibana-appx
+    build: infra/log/kibana
+    ports:
+      - "5601:5601"
+    networks:
+      - appx-network
+
+  server-logstash:
+    container_name: logstash-appx
+    build: infra/log/logstash
+    ports:
+      - "5044:5044"
+    networks:
+      - appx-network
+
+networks:
+  appx-network:
+    driver: bridge
