@@ -33,7 +33,7 @@ services:
     ports:
      - "9200:9200"
     volumes:
-      - ./els:/usr/share/elasticsearch/data
+      - ./infra/log/elasticsearch/els-data:/usr/share/elasticsearch/data
     environment:
       discovery.type: single-node
     networks:
@@ -47,13 +47,13 @@ services:
     networks:
       - appx-network
 
-  server-logstash:
-    container_name: logstash-appx
-    build: infra/log/logstash
-    ports:
-      - "5044:5044"
-    networks:
-      - appx-network
+#  server-logstash:
+#    container_name: logstash-appx
+#    build: infra/log/logstash
+#    ports:
+#      - "5044:5044"
+#    networks:
+#      - appx-network
 
 networks:
   appx-network:
