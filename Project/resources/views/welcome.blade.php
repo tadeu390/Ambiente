@@ -96,17 +96,5 @@
                 </div>
             </div>
         </div>
-        <div id="teste">
-            <form action="{{route('teste.store')}}" method="post">
-            @csrf
-            <div id="teste" style="display: none;">
-                <input type="text" name="nome" value="999999999999999" />
-            </div>
-            <div id="teste2">
-                <input type="text" name="rg" />
-                <button type="submit">Enviar</button>
-            </div>
-        </form>
-        </div>
     </body>
 </html>

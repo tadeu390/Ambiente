@@ -158,6 +158,7 @@ setup.template.settings:
 output.logstash:
   # The Logstash hosts
   hosts: ["http://logstash-appx:5044"]
+  ssl.enabled: false
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications

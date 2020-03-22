@@ -7,7 +7,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./app:/var/www/
+      - ./Project:/var/www/
     tty: true
     networks:
       - appx-network
@@ -18,7 +18,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./app/.docker/dbdata:/var/lib/mysql
+      - ./.docker/dbdata:/var/lib/mysql
     environment:
      MYSQL_ROOT_PASSWORD: appx-laravel
      MYSQL_DATABASE: appx-laravel
@@ -27,29 +27,30 @@ services:
     networks:
      - appx-network
 
-  server-elasticsearch:
-    container_name: elasticsearch-appx
-    build: infra/log/elasticsearch
-    ports:
-     - "9200:9200"
-    volumes:
-      - ./infra/log/elasticsearch/els-data:/usr/share/elasticsearch/data
-    environment:
-      discovery.type: single-node
-    networks:
-     - appx-network
+#  server-elasticsearch:
+#    container_name: elasticsearch-appx
+#    build: infra/log/elasticsearch
+#    ports:
+#     - "9200:9200"
+#    volumes:
+#      - ./infra/log/elasticsearch/els-data:/usr/share/elasticsearch/data
+#    environment:
+#      discovery.type: single-node
+#    networks:
+#     - appx-network
 
-  server-kibana:
-    container_name: kibana-appx
-    build: infra/log/kibana
-    ports:
-      - "5601:5601"
-    networks:
-      - appx-network
+#  server-kibana:
+#    container_name: kibana-appx
+#    build: infra/log/kibana
+#    ports:
+#      - "5601:5601"
+#    networks:
+#      - appx-network
 
 #  server-logstash:
 #    container_name: logstash-appx
 #    build: infra/log/logstash
+#    #tty: true
 #    ports:
 #      - "5044:5044"
 #    networks:

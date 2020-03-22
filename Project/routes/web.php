@@ -11,4 +11,7 @@
 |
 */
 
-Route::resource('/', 'TesteController');
+//Route::resource('/', 'TesteController');
+Route::get('/', function (){
+    return view('welcome');
+});

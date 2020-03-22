@@ -4,6 +4,9 @@ LABEL owner="tadeu.torres"
 
 RUN apt-get update && \
             apt-get install nginx -y && \
+	    apt-get install composer -y && \
+            apt-get install git -y && \
+	    apt-get install npm -y && \
             apt-get install vim -y && \
             apt-get install software-properties-common -y && \
             apt-get install php7.3-cli \
@@ -52,5 +55,5 @@ CMD service nginx start && \
     service rsyslog start && \
     #filebeat setup && \
     service filebeat start && \
-    chmod 777 -R /var/www/storage/ && \
+    #chmod 777 -R /var/www/storage/ && \
     /bin/bash
