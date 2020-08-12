@@ -44,6 +44,7 @@ COPY filebeat-elastic.yml /etc/filebeat/filebeat.yml
 
 RUN filebeat modules enable nginx && \
     filebeat modules enable system && \
+    apt-get update && \
     apt-get install rsyslog -y
 
 COPY nginx.yml /etc/filebeat/modules.d/nginx.yml
