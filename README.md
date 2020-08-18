@@ -14,7 +14,7 @@ Para subir o ambiente siga os seguintes passos:
 ```
 
 ```
-3 - Execute: create-react-app ./
+3 - Execute: npx create-react-app ./
 ```
 ```
 4 - Execute: yarn start
