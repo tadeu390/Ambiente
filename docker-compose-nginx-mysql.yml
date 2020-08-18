@@ -1,10 +1,6 @@
 version: '3'
 
 services:
-
-##
-#SERVIDOR NGINX COM BASE DE DADOS MYSQL
-##
   server-nginx:
     container_name: web-server-appx
     build: infra/web-server/nginx
@@ -30,13 +26,7 @@ services:
      MYSQL_PASSWORD: appx-laravel
     networks:
      - appx-network
-##
-#SERVIDOR NGINX COM BASE DE DADOS MYSQL
-##
 
-##
-#SERVIDOR MONITORAMENTO DE LOGS
-##
 #  server-elasticsearch:
 #    container_name: elasticsearch-appx
 #    build: infra/log/elasticsearch
@@ -65,17 +55,7 @@ services:
 #      - "5044:5044"
 #    networks:
 #      - appx-network
-##
-#SERVIDOR MONITORAMENTO DE LOGS
-##
 
-
-##
-#REDE USADA PARA SERVIDOR NGINX, MYSQL, ELASTIC, KIBANA E LOGSTASH
-##
 networks:
   appx-network:
     driver: bridge
-##
-#REDE USADA PARA SERVIDOR NGINX, MYSQL, ELASTIC, KIBANA E LOGSTASH
-##
