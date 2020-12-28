@@ -42,6 +42,8 @@ COPY default /etc/nginx/sites-available/
 COPY filebeat-elastic.yml /etc/filebeat/filebeat.yml
 #COPY filebeat-logstash.yml /etc/filebeat/filebeat.yml
 
+RUN chmod go-w /etc/filebeat/filebeat.yml
+
 RUN filebeat modules enable nginx && \
     filebeat modules enable system && \
     apt-get update && \
