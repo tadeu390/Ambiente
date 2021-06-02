@@ -14,10 +14,14 @@ Para subir o ambiente siga os seguintes passos:
 ```
 
 ```
-3 - Execute: npx create-react-app ./
+3 - Execute: chmod 777 -R /root/
+```
+
+```
+4 - Execute: npx create-react-app ./
 ```
 ```
-4 - Execute: yarn start
+5 - Execute: yarn start
 ```
 
 Pronto, basta abrir o navegador na URL:
